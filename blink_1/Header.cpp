@@ -43,10 +43,12 @@ int GPIOClass::setup() {
 }
 
 void GPIOClass::setPinMode(int pinNo, int MODE) {
+	m_pinNo = pinNo;
 	pinMode(pinNo, MODE);
 }
 
 void GPIOClass::toggle(int pinNo, int pause) {
+	m_pinNo = pinNo;
 	digitalWrite(pinNo, HIGH);
 	delay(pause);
 	digitalWrite(pinNo, LOW);
@@ -55,11 +57,10 @@ void GPIOClass::toggle(int pinNo, int pause) {
 
 GPIOClass::GPIOClass() {
 	log("An object is created and initializing...");
-	pinNo = 0;
+	m_pinNo = 0;
 	pause = 0;
 }
 
 GPIOClass::~GPIOClass() {
 	log("I am Shiva, the Lord of Death");
-	digitalWrite(pinNo, LOW);
 	}

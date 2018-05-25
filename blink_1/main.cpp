@@ -1,24 +1,23 @@
-#include <wiringPi.h>
-
-// LED Pin - wiringPi pin 0 is BCM_GPIO 17.
-// we have to use BCM numbering when initializing with wiringPiSetupSys
-// when choosing a different pin number please use the BCM numbering, also
-// update the Property Pages - Build Events - Remote Post-Build Event command 
-// which uses gpio export for setup for wiringPiSetupSys
-#define	LED	17
+// LED Pin - wiringPi pin 1 is BCM_GPIO 18.
+#include "Header.h"
 
 int main(void)
 {
-	wiringPiSetupSys();
+	const int LED = 18;
+	log("Press ENTER to start the program...");
+	std::cin.get();
+	log("Wiring Pi using C++ programming language.");
 
-	pinMode(LED, OUTPUT);
+	GPIOClass object1;
+
+	object1.setup();
+	object1.setPinMode(LED, dir_out);
+
 
 	while (true)
 	{
-		digitalWrite(LED, HIGH);  // On
-		delay(500); // ms
-		digitalWrite(LED, LOW);	  // Off
-		delay(500);
+		object1.toggle(LED, 50);
 	}
+	
 	return 0;
 }

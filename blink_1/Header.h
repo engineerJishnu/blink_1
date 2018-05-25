@@ -22,8 +22,9 @@ void log(const char* message);
 //void toggle(const int pinNo, int pause);
 
 class GPIOClass {
+private:
+	int m_pinNo;
 public:
-	int pinNo;
 	int MODE;
 	int pause;
 
