@@ -24,6 +24,4 @@ public:
 	int setupWPi();
 	void setpinMode(int pinNo);
 	void toggle(int pinNo, int time);
-
-
 };

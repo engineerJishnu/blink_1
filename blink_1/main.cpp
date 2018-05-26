@@ -5,21 +5,21 @@
 
 int main(void)
 {
-	const int LED = 18;
+	static int gpioPinNo = 18;
 
 	LogMessage("Press ENTER key to start the program...");
 	std::cin.get();
 
-	std::cout << "Raspberry Pi BCM_GPIO " << LED << " - blink program using wiringPi with C++" << std::endl;
+	std::cout << "Raspberry Pi BCM_GPIO " << gpioPinNo << " - blink program using wiringPi with C++" << std::endl;
 
-	GPIOClass object1;
+	GPIOClass gpioObject1;
 
-	object1.setupWPi();
-	object1.setpinMode(LED);
+	gpioObject1.setupWPi();
+	gpioObject1.setpinMode(gpioPinNo);
 
 	while (true)
 	{
-		object1.toggle(LED, 50);
+		gpioObject1.toggle(gpioPinNo, 50);
 	}
 	return 0;
 }
